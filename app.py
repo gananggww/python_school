@@ -8,30 +8,31 @@ def nilai():
     if request.method == 'POST':
         input_final = []
         input = []
+
+        akreditasi = request.form['akreditasi']
+        if akreditasi:
+            input.append(akreditasi)
+
         bind = request.form['bind']
-        if bind:
-            input.append(int(float(bind)))
-
         bing = request.form['bing']
-        if bing:
-            input.append(int(float(bing)))
-
         math = request.form['math']
-        if math:
-            input.append(int(float(math)))
-
         ipa = request.form['ipa']
-        if ipa:
-            input.append(int(float(ipa)))
+        if bind and bing and math and ipa:
+            total_nilai = bind + bing + math + ipa
+            input.append(str(int(float(total_nilai))))
 
-        input_final.append(input)
+        jarak = request.form['jarak']
+        if jarak:
+            input.append(str(int(float(jarak))))
 
-        result = predict_main(input_final)
-        if result[0]:
-            return jsonify('lolos')
-        else:
-            return jsonify('tidak lolos')
-        # return jsonify()
+        beasiswa = request.form['beasiswa']
+        if beasiswa:
+            input.append(beasiswa)
+
+        result = predict_main(input)
+        # result = input
+
+        return jsonify(result)
     if request.method == 'GET':
         return render_template('index.html')
 

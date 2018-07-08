@@ -1,0 +1,16 @@
+// Decision Tree
+digraph {
+	beasiswa1 [label=beasiswa]
+	jarak2 [label=jarak]
+	"Tidak lulus3" [label="Tidak lulus"]
+	jarak2 -> "Tidak lulus3" [label=">1"]
+	Lulus4 [label=Lulus]
+	jarak2 -> Lulus4 [label="<=1"]
+	beasiswa1 -> jarak2 [label=none]
+	Lulus5 [label=Lulus]
+	beasiswa1 -> Lulus5 [label=pres]
+	Lulus6 [label=Lulus]
+	beasiswa1 -> Lulus6 [label=bm]
+	Lulus7 [label=Lulus]
+	beasiswa1 -> Lulus7 [label=mw]
+}
