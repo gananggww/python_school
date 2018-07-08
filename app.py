@@ -8,30 +8,31 @@ def nilai():
     if request.method == 'POST':
         input_final = []
         input = []
-        bind = request.form['bind']
+        bind = request.json['bind']
         if bind:
             input.append(int(float(bind)))
 
-        bing = request.form['bing']
+        bing = request.json['bing']
         if bing:
             input.append(int(float(bing)))
 
-        math = request.form['math']
+        math = request.json['math']
         if math:
             input.append(int(float(math)))
 
-        ipa = request.form['ipa']
+        ipa = request.json['ipa']
         if ipa:
             input.append(int(float(ipa)))
 
         input_final.append(input)
 
         result = predict_main(input_final)
+        # return jsonify(result)
         if result[0]:
             return jsonify('lolos')
         else:
             return jsonify('tidak lolos')
-        # return jsonify()
+
     if request.method == 'GET':
         return render_template('index.html')
 
